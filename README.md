@@ -238,7 +238,7 @@ sudo apt-get upgrade
 
    - Download the corresponding JSON file, open it et copy the contents.
 
-   - Open `/var/www/catalog/catalog/client_secret.json` and paste the previous contents into the this file.
+   - Open `/var/www/FlaskApp/FlaskApp/client_secret.json` and paste the previous contents into the this file.
 
    - Replace the client ID in app.js file in the project directory.
    
