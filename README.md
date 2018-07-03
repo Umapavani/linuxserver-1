@@ -1,13 +1,13 @@
 # Udacity-Linux-Server-Configuration
-### By Rohini Pravallika Chodisetty
+### By Vanitha Vuppalapati
 
 ### About
   This is the Udacity project 6 about the Configuring the Linux the server.
 
 ### Server Details
-Server IP Address 13.127.162.197
+Server IP Address 35.154.196.1
 
-Hosted site Url [http://13.127.162.197.xip.io/](http://13.127.162.197.xip.io/)
+Hosted site Url [http://35.154.196.1.xip.io/](http://35.154.196.1.xip.io/)
 
 ### Configuring Linux Server
 
@@ -60,7 +60,7 @@ sudo apt-get upgrade
    
    Now from your log in to grader with private key generated 
    ```
-   ssh -i .ssh/id_rsa grader@13.127.162.197
+   ssh -i .ssh/id_rsa grader@35.154.196.1
    ```
   #### Changing the ssh port to 2200
    ```
@@ -78,7 +78,7 @@ sudo apt-get upgrade
    
    Now Login using command like this
    ```
-   ssh -i .ssh/id_rsa -p 2200 grader@13.127.162.197
+   ssh -i .ssh/id_rsa -p 2200 grader@35.154.196.1
    ```
    
   #### Disabling ssh login as root
@@ -123,11 +123,11 @@ sudo apt-get upgrade
    
    In that direcory clone your github repository
    
-   `sudo git clone 'https://github.com/PravallikaChodisetty/catalogpr.git'`
+   `sudo git clone 'https://github.com/vuppalapativanitha/myclothingcatalog.git'`
    
-   Rename the repository to FlaskApp
+   Renaming the repository to FlaskApp
    
-   Then rename your project file to `__init__.py`
+   Then rename main.py file to `__init__.py`
    
    Make Following changes in __init__.py
    ```
@@ -159,16 +159,16 @@ sudo apt-get upgrade
    
    exit from db and postgres `\q and exit`
    
-   Change the database connection in both db_setup.py and `__init__.py` as `engine =       create_engine('postgresql://catalog:password@localhost/catalog')`
+   Change the database connection in both database_setup.py and `__init__.py` as `engine =       create_engine('postgresql://catalog:password@localhost/catalog')`
    
-   Now you are ready with your applicatiom
+   Now we are ready with our applicatiom
   #### Configure and Enable a New Virtual Host
    `sudo nano /etc/apache2/sites-available/FlaskApp.conf`
    
    In this add the following code
    ```
    <VirtualHost *:80>
-		ServerName 13.127.162.197
+		ServerName 35.154.196.1
 		ServerAdmin admin@mywebsite.com
 		WSGIScriptAlias / /var/www/FlaskApp/flaskapp.wsgi
 		<Directory /var/www/FlaskApp/FlaskApp/>
@@ -210,13 +210,14 @@ sudo apt-get upgrade
    ```
    save and exit
    
-   Deploying flask app with apache2 is referred from [Digital ocean](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps)
+   Deploying flask app with apache2 is referred from [Digital ocean]
+   (https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps)
    
    #### Installing require modules
    You can either install all modules on your machine or create a virtual environment for the project and install the modules
    ` pip install flask sqlalchemy psycopg2 requests oauth2client`
    
-   #### Setting up your Google Oauth2
+   #### Setting up Google Oauth2
    
    - Go to [Google Cloud Plateform](https://console.cloud.google.com/).
   
@@ -224,26 +225,26 @@ sudo apt-get upgrade
    
    - Click `Credentials`.
    
-   - Create an OAuth Client ID (under the Credentials tab), and add http://13.127.162.197.xip.io 
+   - Create an OAuth Client ID (under the Credentials tab), and add http://35.154.196.1.xip.io 
      as authorized JavaScript origins.
    
    - Add the below three links as authorized javascript origins
      
-     1. http://13.127.162.197.xip.io/login
+     1. http://35.154.196.1.xip.io/
 
-     2. http://13.127.162.197.xip.io/gconnect
+     2. http://35.154.196.1.xip.io/gconnect
 
-     3. http://13.127.162.197.xip.io/callback 
+     3. http://35.154.196.1.xip.io/callback 
 
    - Download the corresponding JSON file, open it et copy the contents.
 
    - Open `/var/www/catalog/catalog/client_secret.json` and paste the previous contents into the this file.
 
-   - Replace the client ID to line 25 of the `templates/login.html` file in the project directory.
+   - Replace the client ID in app.js file in the project directory.
    
    #### Final Step
    
-   Restart your apache2 server
+   Restart apache2 server
   
    `sudo service apache2 restart`
 
@@ -255,5 +256,4 @@ sudo apt-get upgrade
 
    3. https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps
 
-   4. stackoverflow website 
    
